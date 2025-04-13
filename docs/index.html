@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class of 2012 Reunion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: -30px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .info-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            margin-top: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .detail-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .detail-card h3 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .schedule-container {
+            margin: 30px 0;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #e0e0e0;
+            align-items: start;
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .time-block {
+            padding: 5px 0;
+        }
+        
+        .time {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1rem;
+            background: rgba(247, 37, 133, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .activity {
+            padding: 5px 0;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .activity-desc {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .activity-desc ul {
+            padding-left: 20px;
+            margin: 8px 0 0 0;
+        }
+        
+        .activity-desc li {
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 10px 5px 0 5px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(to right, #f72585, #b5179e);
+            box-shadow: 0 4px 8px rgba(247, 37, 133, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 6px 12px rgba(247, 37, 133, 0.4);
+        }
+        
+        .invitation-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        
+        .invitation-card {
+            text-align: center;
+            max-width: 350px;
+        }
+        
+        .invitation-preview {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .invitation-preview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .invitation-preview img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(to right, var(--accent), #7209b7);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+            }
+            
+            .time-block {
+                margin-bottom: 10px;
+                padding-right: 0;
+            }
+            
+            .invitation-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 8px 0;
+            }
+            
+            .invitation-preview img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Class of 2012 Reunion &#128151;</h1>
+            <div class="subtitle">A Decade of Memories &#10084; • June 1, 2025 &#10084; • Lions High School &#10084; </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="info-section">
+            <h2>Welcome Back, &#129321; !</h2>
+            <p style="font-size: 1.1rem;">Join us as we celebrate 13 incredible years since graduation! This special day will be filled with nostalgia, laughter, and the joy of reconnecting with old friends. Share your stories, see how everyone has grown, and create new memories together.</p>
+        </section>
+        
+		<section class="info-section">
+            <h2>Event Details &#128197;</h2>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>When &#128525;</h3>
+                    <p><strong>Sunday, June 1, 2025</strong></p>
+                    <p>10:00 AM - 5:30 PM</p>
+                    <p style="margin-top: 10px;" class="highlight">13 Years in the Making!</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Where &#129392;</h3>
+                    <p><strong>Lions High School</strong></p>
+                    <p>Gnagvathi, 583227</p>
+                    <p style="margin-top: 10px;" class="highlight">Back Where It All Began!</p>
+                </div>
+            </div>
+        </section>
+		
+        <section class="info-section">
+            <h2>Event Schedule &#128221;</h2>
+            <div class="schedule-container">
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">10:00 AM<br>to<br>12:00 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Welcome & Reminiscence</div>
+                        <div class="activity-desc">
+                            Reconnect with classmates and teachers as we share cherished school memories and updates on our current lives.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">12:00 PM<br>to<br>1:30 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Nostalgic Games</div>
+                        <div class="activity-desc">
+                            Relive our school days with friendly matches with classmates and teachers.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">1:30 PM<br>to<br>2:30 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Lunch</div>
+                        <div class="activity-desc">
+                            Enjoy a delicious meal together, rekindling old friendships over shared flavors.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">2:30 PM<br>to<br>3:30 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Faculty Address</div>
+                        <div class="activity-desc">
+                            Hear inspiring words from our esteemed teachers as they share their experiences and insights.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">3:30 PM<br>to<br>4:00 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Group Photo Session</div>
+                        <div class="activity-desc">
+                            Capture the moment with group photos to commemorate our reunion.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">4:00 PM<br>to<br>4:30 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Tea Break</div>
+                        <div class="activity-desc">
+                            Relax and mingle over refreshments.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">4:30 PM<br>to<br>5:00 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Honoring Our Faculty</div>
+                        <div class="activity-desc">
+                            Express our gratitude to the faculty with a special ceremony recognizing their contributions.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time-block">
+                        <div class="time">5:00 PM<br>to<br>5:30 PM</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-title">Memories Presentation</div>
+                        <div class="activity-desc">
+                            Enjoy a curated slideshow of photos and videos from our school days.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2 style="text-align: center;">Invitation & RSVP</h2>
+            <p style="text-align: center; font-size: 1.1rem;">We've prepared beautiful invitations for you to share and remember this special occasion.</p>
+            
+            <div class="invitation-container">
+                <!-- Cover Invitation -->
+                <div class="invitation-card">
+                    <div class="invitation-preview">
+                        <img src="Cover.jpeg" alt="Reunion Cover">
+                    </div>
+                    <a href="Cover.jpeg" class="btn btn-secondary" download="ClassReunion_Cover.jpeg">
+                        Download Cover
+                    </a>
+                </div>
+                
+                <!-- Schedule Invitation -->
+                <div class="invitation-card">
+                    <div class="invitation-preview">
+                        <img src="Schedule.jpeg" alt="Event Schedule">
+                    </div>
+                    <a href="Schedule.jpeg" class="btn btn-secondary" download="ClassReunion_Schedule.jpeg">
+                        Download Schedule
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 1.1rem;">Please confirm your attendance &#10084;</p>
+                <a href="mailto:bharathkumarv137@gmail.com?subject=Class%20of%202012%20Reunion%20RSVP&body=Name%3A%20%5BYour%20Name%5D%0A%0AAttending%3A%20%5BYes%2FNo%5D%0A%0ANumber%20of%20Guests%3A%20%5BNumber%5D%0A%0AAny%20Dietary%20Restrictions%3A%20%5BNone%2FList%5D%0A%0AMessage%3A%20%5BOptional%20Message%5D" class="btn">
+                    Click to RSVP
+                </a>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #666;">This will open your email client to send RSVP to bharathkumarv137@gmail.com</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem; margin-bottom: 10px;">&copy; Class of 2012 Reunion Committee &#128151;</p>
+            <p style="font-weight: 600;">Contact: bharathkumarv137@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
